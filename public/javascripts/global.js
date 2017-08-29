@@ -7,8 +7,6 @@ $(document).ready(function(){
     // Populate the user table on initial page load
     populateTable();
 
-
-
 });
 
 
@@ -19,6 +17,7 @@ function populateTable(){
 
     // Empty content string
     var tableContent = '';
+    console.log(tableContent);
 
     // jQuery AJAX call for json
     $.getJSON( '/users/userlist', function( data ){
@@ -36,16 +35,17 @@ function populateTable(){
         });
 
         // Inject the whole content string into our existing HTML table
-        $('#userList table tbody').html(tableContent);
+        //$('#userList table thead').html(tableContent); <= .jade
+        $('#userList').html(tableContent);
 
         // Username link click
-        $('#userList table tbody').on('click', 'td a.linkshowuser', showUserInfo);
+        $('#userList').on('click', 'td a.linkshowuser', showUserInfo);
 
         // Add User button click
         $('#btnAddUser').on('click', addUser);
 
         // Delete User link click
-        $('#userList table tbody').on('click', 'td a.linkdeleteuser', deleteUser);
+        $('#userList').on('click', 'td a.linkdeleteuser', deleteUser);
     })
 }
 
@@ -78,7 +78,7 @@ function addUser(event) {
 
     // Super basic validation - increase errorCount variable if any fields are blank
     var errorCount = 0;
-    $('#addUser input').each(function(index, val) {
+    $('input').each(function(index, val) {
         if($(this).val() === '') { errorCount++; }
     });
 
@@ -87,12 +87,12 @@ function addUser(event) {
 
         // If it is, compile all user info into one object
         var newUser = {
-            'username': $('#addUser fieldset input#inputUserName').val(),
-            'email': $('#addUser fieldset input#inputUserEmail').val(),
-            'fullname': $('#addUser fieldset input#inputUserFullname').val(),
-            'age': $('#addUser fieldset input#inputUserAge').val(),
-            'location': $('#addUser fieldset input#inputUserLocation').val(),
-            'gender': $('#addUser fieldset input#inputUserGender').val()
+            'username': $('#inputUserName').val(),
+            'email': $('#inputUserEmail').val(),
+            'fullname': $('#inputUserFullname').val(),
+            'age': $('#inputUserAge').val(),
+            'location': $('#inputUserLocation').val(),
+            'gender': $('#inputUserGender').val()
         }
 
         // Use AJAX to post the object to our adduser service
@@ -107,7 +107,7 @@ function addUser(event) {
             if (response.msg === '') {
 
                 // Clear the form inputs
-                $('#addUser fieldset input').val('');
+                $('input').val('');
 
                 // Update the table
                 populateTable();

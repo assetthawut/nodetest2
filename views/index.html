@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="/javascripts/global.js"></script>
+
+<!-- USER LIST -->
+<table>
+  <tr>
+    <th>User Name</th>
+    <th>Email</th>
+    <th>Delete?</th>
+  </tr>
+  <tbody id="userList">
+  </tbody>
+</table>
+
+<!-- USER INFO -->
+<h2>User INFO</h2>
+<p>
+    <strong>Name:</strong>
+        <span id="userInfoName"></span>
+        <br>
+    <strong>Age:</strong>
+        <span id="userInfoAge"></span>
+        <br>
+    <strong>Gender:</strong>
+        <span id="userInfoGender"></span>
+        <br>
+    <strong>Location:</strong>
+        <span id="userInfoLocation"></span>
+        <br>
+</p>
+
+<!-- Add list -->
+<h2>Add User</h2>
+<fieldset>
+    <legend>Add User</legend>
+    <input id="inputUserName", type="text", placeholder="Username"></input><br>
+    <input id="inputUserEmail", type="text", placeholder="Email"></input><br>
+    <input id="inputUserFullname", type="text", placeholder="Full name"></input><br>
+    <input id="inputUserAge", type="text", placeholder="Age"></input><br>
+    <input id="inputUserLocation", type="text", placeholder="Location"></input><br>
+    <input id="inputUserGender", type="text", placeholder="Gender"></input><br>
+    <button id="btnAddUser">Add user</button>
+
+
+</fieldset>
+
+
+</body>
+</html>

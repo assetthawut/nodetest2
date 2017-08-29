@@ -1,0 +1,11 @@
+{
+  "name": "test.global.js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "global.test.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC"
+}
