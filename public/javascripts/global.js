@@ -1,23 +1,26 @@
 // Userlist data array for filling in info box
 var userListData = [];
 
-// Dom Ready ========================
-$(document).ready(function(){
+// Dom Ready ================================================================
+/*$(document).ready(function(){
     
     // Populate the user table on initial page load
     populateTable();
 
-});
+});*/
 
 
-// Functions =============================
+// Functions ================================================================
 
 // Fill table with data
 function populateTable(){
 
+    return 2;
+
+
     // Empty content string
     var tableContent = '';
-    console.log(tableContent);
+    //console.log(tableContent);
 
     // jQuery AJAX call for json
     $.getJSON( '/users/userlist', function( data ){
@@ -47,7 +50,7 @@ function populateTable(){
         // Delete User link click
         $('#userList').on('click', 'td a.linkdeleteuser', deleteUser);
     })
-}
+};
 
 // Show User Info
 function showUserInfo(event){
@@ -166,4 +169,9 @@ function deleteUser(event) {
 
     }
 
+};
+// If we're running under Node, 
+if(typeof exports !== 'undefined') {
+    exports.populateTable = populateTable;
+    exports.showUserInfo = showUserInfo;
 };

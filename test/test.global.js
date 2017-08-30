@@ -17,18 +17,30 @@ describe('Test class Calculate', () => {
 }); */
 
 
-//Node assert --------------------------------------------------------
+//Node assert ---------------------------------------------------------------
 
 var assert = require("assert"); // core module
-var global = require('../public/javascripts/global');  // our module
+var jsdom = require('jsdom');
+var test1 = require('../public/javascripts/global');  // our module
+var myCode = require('./functions.js');  // our module
+
 
 describe('global', function(){
   describe('Module user list', function(){
     it('should have a populate Method', function(){
-      assert.equal(typeof populateTable, 'object');
-      //assert.equal(typeof populateTable, 'function');
+      //assert.equal(typeof populateTable, 'object');s
+      //assert.equal(test1.populateTable(),2,"testfail");
+      assert.equal(test1.showUserInfo(),2,"testfail");
     })
   })
+});
+describe('tests', function(){
+    describe('testFunction', function(){
+        it('should return 1', function(){
+            // Call the exported function from the module
+            assert.equal(myCode.testFunction(),1,"error"); //assert module
+        })
+    })
 }); 
 
-// /Node assert --------------------------------------------------------
+// /Node assert --------------------------------------------------------------
