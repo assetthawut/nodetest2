@@ -2,21 +2,19 @@
 var userListData = [];
 
 // Dom Ready ================================================================
-/*$(document).ready(function(){
+$(document).ready(function(){
     
     // Populate the user table on initial page load
     populateTable();
 
-});*/
+});
+
 
 
 // Functions ================================================================
 
 // Fill table with data
 function populateTable(){
-
-    return 2;
-
 
     // Empty content string
     var tableContent = '';
@@ -77,6 +75,7 @@ function showUserInfo(event){
 
 // Add User
 function addUser(event) {
+    
     event.preventDefault();
 
     // Super basic validation - increase errorCount variable if any fields are blank
@@ -170,7 +169,17 @@ function deleteUser(event) {
     }
 
 };
-// If we're running under Node, 
+
+
+// get endter key press ===================================================
+$(document).keypress(function (e) {
+    if (e.which == 13) {
+        alert('enter key is pressed');
+    }
+});
+
+
+// export function for test function
 if(typeof exports !== 'undefined') {
     exports.populateTable = populateTable;
     exports.showUserInfo = showUserInfo;

@@ -18,7 +18,7 @@ describe('Test class Calculate', () => {
 
 
 //Node assert ---------------------------------------------------------------
-
+/*
 var assert = require("assert"); // core module
 var jsdom = require('jsdom');
 var test1 = require('../public/javascripts/global');  // our module
@@ -43,4 +43,18 @@ describe('tests', function(){
     })
 }); 
 
+*/
 // /Node assert --------------------------------------------------------------
+
+// node supertest 
+const request = require('supertest');
+const server = require('../app');
+
+describe('test get input', function(){
+        it('should response ok when call add',function(done){
+            request(server)
+                .get('/users/userlist')
+                .expect(200, done);
+                //.expect("fizz", done);
+        });
+});
