@@ -4,8 +4,11 @@
   "description": "",
   "main": "global.test.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --compilers js:babel-core/register --compilers jsx:babel-register"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "babel-register": "^6.26.0"
+  }
 }
