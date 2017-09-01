@@ -2,12 +2,14 @@
 var userListData = [];
 
 // Dom Ready ================================================================
+/*
 $(document).ready(function(){
     
     // Populate the user table on initial page load
     populateTable();
 
 });
+*/
 
 
 
@@ -133,7 +135,8 @@ function addUser(event) {
 // Delete User
 // Delete User
 function deleteUser(event) {
-
+    //alert(event);
+        console.log(event);
     event.preventDefault();
 
     // Pop up a confirmation dialog
@@ -141,7 +144,7 @@ function deleteUser(event) {
 
     // Check and make sure the user confirmed
     if (confirmation === true) {
-
+        
         // If they did, do our delete
         $.ajax({
             type: 'DELETE',
@@ -179,9 +182,20 @@ $(document).keypress(function (e) {
 });
 */
 
+function testreturn(){
+    return false;
+}
+
+
+
+
 
 // export function for test function
 if(typeof exports !== 'undefined') {
     exports.populateTable = populateTable;
-    exports.showUserInfo = showUserInfo;
+    exports.showUserInfo  = showUserInfo;
+    exports.deleteUser    = deleteUser;  
+    exports.testreturn    = testreturn;
 };
+
+
