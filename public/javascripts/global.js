@@ -186,6 +186,15 @@ function testreturn(){
     return false;
 }
 
+function returnjson(truevar){
+    var jsondata = {"firstName":"John", "lastName":"Doe"};
+    if(truevar == true){
+        return jsondata;
+    }else{
+        return false;
+    }    
+
+}
 
 
 
@@ -196,6 +205,7 @@ if(typeof exports !== 'undefined') {
     exports.showUserInfo  = showUserInfo;
     exports.deleteUser    = deleteUser;  
     exports.testreturn    = testreturn;
+    exports.returnjson    = returnjson;
 };
 
 
