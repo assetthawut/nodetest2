@@ -35,6 +35,19 @@ sum(){
 
 }
 
+class Document {
+  constructor (db) {
+    this.db = db;
+  }
+ 
+  getData(id) {
+    return this.db.get(id);
+  }
+}
+
+
+
+
 
 const joe = new DB("PowerRenger");
 
@@ -45,17 +58,30 @@ describe("Test Sinon Done!!!",function(){
     it(" First Test Spy in function echo ",function(){
         const spy  = sinon.spy(joe,'sum');
         joe.echo("Hello");
-        expect(spy.calledOnce ).to.equal(true);
+        expect(spy.calledThrice).to.equal(true);
     });
 
     it(" Second Test Stub",function(){
-        // db = {};
-        // db.echo = sinon.stub();
-        // db.echo.withArgs('Test').return("Hi");
-        // const doc = new Document(sett);
-        // expect(doc.getData('Test')).to.deep.equal("Hi");
+         //db = {};
+         //db.echo = sinon.stub();
+         //db.echo.withArgs('Test').return("Hi");
+         //const doc = new DB(sett);
+         //expect(doc.getData('Test')).to.deep.equal("Hi");
 
+        // fake db object
+        // fake db object
+        fake = {};
+        // stub the method
+        fake.get = sinon.stub(); 
+        // specify argument and result to return
+        fake.get.withArgs('abc_1').returns({id: 'abc_1', text: 'some text'});
 
+        const doc = new Document(fake);
+
+        // expect result
+        expect(doc.getData('abc_1')).to.deep.equal({id: 'abc_1', text: 'some text'});
+ 
+          
 
 
     });
