@@ -80,10 +80,9 @@ describe("Test Sinon Done!!!",function(){
 
         // expect result
         expect(doc.getData('abc_1')).to.deep.equal({id: 'abc_1', text: 'some text'});
- 
-          
-
-
+       
     });
+
+
 
 });
