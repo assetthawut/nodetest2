@@ -31,9 +31,13 @@ sum(){
       return console.log(word);
   }
 
- 
 
 }
+
+class indy{
+    
+}
+
 
 class Document {
   constructor (db) {
@@ -45,6 +49,12 @@ class Document {
   }
 }
 
+/* callback function*/
+function myFunction(condition,callback){
+    if(condition){
+        callback();
+    }
+}
 
 describe(" Test Mock ",function(){
     it(" Mock ",function(){
@@ -65,13 +75,70 @@ describe(" Test Mock ",function(){
             // mock.verify();
             // mock.restore();
 
-            const db = {};
-            db.get   = sinon.stub();
-            db.get.withArgs('abc_1').returns({ text: 'some text'});
-            const doc = new Document(db);
-            sinon.mock(doc).expects('getData').once().withArgs('abc_1').returns({id: 'abc_1', text: 'some text'});
-            sinon.mock(doc).verify();
-            sinon.mock(doc).restore();
+            /* code below can  run  */
+                    // const db = {};
+                    // db.get   = sinon.stub();
+                    // db.get.withArgs('abc_1').returns({ text: 'some text'});
+                    // const doc = new Document(db);
+                    // sinon.mock(doc).expects('getData').once().withArgs('abc_1').returns({id: 'abc_1', text: 'some text'});
+                    // sinon.mock(doc).verify();
+                    // sinon.mock(doc).restore();
+
+            var joe = new DB();
+            var spy = sinon.spy();
+
+            var mock = sinon.mock(joe);
+            var expectation = mock.expects("sum").atLeast(1).atMost(3);  
             
+            joe.sum();            
+            //expectation.verify();
+             mock.restore();
+             mock.verify();
+            
+
+
+
+
+
     });
+
+
+
+    it(" Called Spy 1 ",function(){
+        var spy  = sinon.spy();
+        spy('Hello','World');
+        console.log(spy.firstCall.args);
+    });
+
+    it(" Called Spy 2 ",function(){
+        var user = { setName: function(name){
+            this.name = name;
+        }}
+
+        var setnameSpy = sinon.spy(user,'setName');
+        user.setName("Joe Sett 1");
+        user.setName("Joe Sett 2");
+        user.setName("Joe Sett 3");
+        console.log(setnameSpy.callCount);
+        setnameSpy.restore();
+    });
+
+    // it(" Called Spy 3",function(){
+    //     var callback = sinon.spy();
+    //     myFunction(true,callback);
+    //     assert(callback.calledOnce);
+    // }); 
+
+    it(" Called Mock ",function(){
+        var test = new DB();
+        //test.echo("Test");
+        var mock = sinon.mock(test).expects('echo').once().returns('finished');
+        //test.echo("Test");
+        new Document().getData(test);
+        mock.verify();
+        mock.restore();
+
+
+        
+    });    
 });

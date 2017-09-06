@@ -27,10 +27,15 @@ sum(){
   echo(word){
       this.sum();
       this.sum();
-      this.sum();
+      //this.sum();
       return console.log(word);
   }
 
+
+
+
+
+  
  
 
 }
@@ -58,8 +63,15 @@ describe("Test Sinon Done!!!",function(){
     it(" First Test Spy in function echo ",function(){
         const spy  = sinon.spy(joe,'sum');
         joe.echo("Hello");
-        expect(spy.calledThrice).to.equal(true);
+        expect(spy.calledTwice).to.equal(true);
     });
+
+
+
+
+
+
+
 
     it(" Second Test Stub",function(){
          //db = {};
@@ -75,11 +87,13 @@ describe("Test Sinon Done!!!",function(){
         fake.get = sinon.stub(); 
         // specify argument and result to return
         fake.get.withArgs('abc_1').returns({id: 'abc_1', text: 'some text'});
+        fake.get.withArgs('abc_2').returns({id: 'abc_2', text: 'some text 2'});
 
         const doc = new Document(fake);
 
         // expect result
-        expect(doc.getData('abc_1')).to.deep.equal({id: 'abc_1', text: 'some text'});
+        expect(doc.getData('abc_1')).to.deep.equal({id: 'abc_1', text: 'some text 00000'});
+        expect(doc.getData('abc_2')).to.deep.equal({id: 'abc_2', text: 'some text 00000'});
        
     });
 
